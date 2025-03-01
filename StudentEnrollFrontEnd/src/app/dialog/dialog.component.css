@@ -1,0 +1,13 @@
+
+
+mat-form-field{
+    width: 100%;
+}
+
+.valid{
+    color: red;
+}
+
+.temp{
+    text-align: center;
+}

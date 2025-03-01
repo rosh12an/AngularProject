@@ -1,0 +1,22 @@
+
+    <mat-card>
+      <mat-card-content>
+        <form [formGroup]="adminForm">
+          <h2>Admin Login</h2>
+            <mat-form-field>
+              <mat-label>Username</mat-label>
+              <input matInput type="text" formControlName="username">
+            </mat-form-field>
+          
+            <br>
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input matInput placeholder="******" type="password" formControlName="password">
+            </mat-form-field>
+
+            <div mat-dialog-action>
+              <button mat-raised-button color="primary" (click)="doLogin()">Login</button>
+            </div>
+          </form>
+        </mat-card-content>
+    </mat-card>

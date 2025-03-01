@@ -1,0 +1,73 @@
+<h1 mat-dialog-title class="temp">!!! Student Enrollment Form !!!</h1>
+<div mat-dialog-content>
+<form [formGroup]="admissionForm">
+
+  <!-- <mat-form-field appearance="outline">
+    <mat-label>Roll Number</mat-label>
+    <input matInput formControlName="rollNumber" readonly="rollno">
+  </mat-form-field> -->
+  
+
+    <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input formControlName="name" matInput placeholder="Enter first Name" [readonly]="disabledValue" maxlength="10">
+      </mat-form-field>
+      <span class="valid" *ngIf="userN && userN.invalid && userN.touched">This field is not valid</span>
+    <br>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Surname</mat-label>
+        <input formControlName="surname" matInput placeholder="Enter last name" [readonly]="disabledValue" minlength="1" maxlength="10"  pattern="[a-zA-Z]*">
+      </mat-form-field>
+      <span class="valid" *ngIf="userS && userS.invalid && userS.touched">This field is not valid</span>
+      <br>
+
+    <label for=""><h2>Gender</h2></label>
+    <mat-radio-group formControlName="gender">
+        <mat-radio-button *ngFor="let gender of genderlist" [value]="gender" [disabled]="disabledValue">
+                {{gender}}
+        </mat-radio-button>
+    </mat-radio-group>
+    
+            <mat-form-field appearance="outline">
+                <mat-label>Address</mat-label>
+                <input formControlName="address" type="text" matInput placeholder="Enter Address" pattern="[a-zA-Z && 0-9]*">
+              </mat-form-field>
+              <span class="valid" *ngIf="userA && userA.invalid && userA.touched">This field is not valid</span>
+      <br>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Contact Number</mat-label>
+                <input formControlName="contactno" type="text" matInput placeholder="Ex +9123232453" minlength="10" maxlength="10" pattern="[0-9]*">
+              </mat-form-field>
+              <span class="valid" *ngIf="userC && userC.invalid && userC.touched">This field is not valid</span>
+      <br>
+
+              <!-- <mat-form-field appearance="outline">
+                <mat-label>Branch</mat-label>
+                <mat-select formControlName="branch" placeholder="Select Branch" [disabled]="disabledValue">
+                <mat-option value="Civil">Civil</mat-option>
+                <mat-option value="Computer Science">Computer Science</mat-option>
+                <mat-option value="Mechanical">Mechanical</mat-option>
+                <mat-option value="Electrical">Electrical</mat-option>
+                <mat-option value="Information Technology">Information Technology</mat-option>
+                </mat-select>
+            </mat-form-field> -->
+
+            <mat-form-field appearance="outline">
+              <mat-label>Branch</mat-label>
+              <mat-select formControlName="branch" placeholder="Select Branch" >
+              <mat-option *ngFor="let branch of branchlist" [value]="branch" [disabled]="disabledValue">{{branch}}</mat-option>
+              </mat-select>
+          </mat-form-field>
+
+            
+            <div mat-dialog-action [align]="'center'">
+                <button mat-raised-button color="warn" (click)="closePopup()" routerLink="home">Close</button>
+                <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addStudent()" [disabled]="!admissionForm.valid">Save</button>
+                <!-- <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addStudent()"
+                >Save</button> -->
+            
+            </div>
+        </form>
+</div>
